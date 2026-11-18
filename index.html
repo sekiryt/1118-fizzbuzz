@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FizzBuzz (1〜50)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>FizzBuzz (1〜50)</h1>
+      <p class="subtitle">1から50までの数字を順番に判定し、アニメーション表示します。</p>
+      
+      <div class="legend">
+        <span class="legend-item legend-default"><span class="dot"></span> 通常の数値</span>
+        <span class="legend-item legend-fizz"><span class="dot"></span> 3の倍数 (Fizz)</span>
+        <span class="legend-item legend-buzz"><span class="dot"></span> 5の倍数 (Buzz)</span>
+        <span class="legend-item legend-fizzbuzz"><span class="dot"></span> 15の倍数 (FizzBuzz)</span>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button id="start-btn" class="btn btn-primary">FizzBuzz を実行</button>
+      <button id="reset-btn" class="btn btn-secondary" disabled>リセット</button>
+      <div id="status-message" class="status-message" aria-live="polite">「FizzBuzz を実行」ボタンを押してください</div>
+    </div>
+
+    <main>
+      <div id="fizzbuzz-grid" class="grid-container" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

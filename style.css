@@ -1,0 +1,263 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+
+  /* タイプ別カラー */
+  --color-normal: #64748b;
+  --color-normal-bg: #f8fafc;
+  --color-normal-border: #cbd5e1;
+
+  --color-fizz: #2563eb;
+  --color-fizz-bg: #eff6ff;
+  --color-fizz-border: #93c5fd;
+
+  --color-buzz: #059669;
+  --color-buzz-bg: #ecfdf5;
+  --color-buzz-border: #6ee7b7;
+
+  --color-fizzbuzz: #7c3aed;
+  --color-fizzbuzz-bg: #f5f3ff;
+  --color-fizzbuzz-border: #c4b5fd;
+  --fizzbuzz-gradient: linear-gradient(135deg, #7c3aed, #db2777);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 凡例 (Legend) */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-default .dot { background-color: var(--color-normal); }
+.legend-fizz .dot { background-color: var(--color-fizz); }
+.legend-buzz .dot { background-color: var(--color-buzz); }
+.legend-fizzbuzz .dot {
+  background: var(--fizzbuzz-gradient);
+}
+
+/* コントロールエリア */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 160px;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 10px -1px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.status-message {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  min-height: 1.4rem;
+}
+
+/* グリッドカードレイアウト */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+  perspective: 1000px;
+}
+
+/* カード共通スタイル */
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.card-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* タイプ別スタイリング */
+.card-normal {
+  background: var(--color-normal-bg);
+  border-color: var(--color-normal-border);
+  color: var(--text-main);
+}
+
+.card-fizz {
+  background: var(--color-fizz-bg);
+  border-color: var(--color-fizz-border);
+  color: var(--color-fizz);
+}
+
+.card-buzz {
+  background: var(--color-buzz-bg);
+  border-color: var(--color-buzz-border);
+  color: var(--color-buzz);
+}
+
+.card-fizzbuzz {
+  background: var(--color-fizzbuzz-bg);
+  border-color: var(--color-fizzbuzz-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-fizzbuzz .card-val {
+  background: var(--fizzbuzz-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.card-fizzbuzz::after {
+  content: '★';
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.75rem;
+  color: #db2777;
+}
+
+/* アニメーションキーフレーム */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* レスポンシブ微調整 */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 0.6rem;
+  }
+  .card {
+    padding: 0.75rem 0.25rem;
+  }
+  .card-val {
+    font-size: 1rem;
+  }
+}
